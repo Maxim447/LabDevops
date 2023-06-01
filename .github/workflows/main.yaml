@@ -37,7 +37,7 @@ jobs:
         uses: adityak74/google-drive-upload-git-action@main
         with:
           credentials: ${{ secrets.CREDENTIALS }}
-          filename: build/libs
+          filename: build/libs/LabDevops-0.0.1-SNAPSHOT.jar
           folderId: ${{ secrets.FOLDER_ID }}
           overwrite: "true"
           
