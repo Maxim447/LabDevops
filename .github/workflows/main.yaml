@@ -33,9 +33,13 @@ jobs:
           name: Echo-Bot
           path: build/libs
           
-      - name: Upload to google
+      - name: Upload to google drive
         uses: adityak74/google-drive-upload-git-action@main
-      
+        with:
+          credentials: ${{ secrets.CREDENTIALS }}
+          filename: build/libs
+          folderId: ${{ secrets.FOLDER_ID }}
+          overwrite: "true"
           
           
       
