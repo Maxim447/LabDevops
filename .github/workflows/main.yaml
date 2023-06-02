@@ -2,7 +2,7 @@ name: Echo-Bot
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "main" ]
     
   workflow_dispatch:
   
