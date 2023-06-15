@@ -57,7 +57,7 @@ jobs:
     steps:
       - uses: actions/download-artifact@v3
         with:
-          name: Package
+          name: Echo-Bot
           path: build/libs
         
       - name: Upload to google drive
