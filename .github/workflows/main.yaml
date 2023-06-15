@@ -3,6 +3,8 @@ name: Echo-Bot
 on:
   push:
     branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
     
   workflow_dispatch:
   
@@ -17,7 +19,7 @@ jobs:
         uses: github/super-linter@v5
         env:
           VALIDATE_ALL_CODEBASE: false
-          DEFAULT_BRANCH: master
+          DEFAULT_BRANCH: main
           VALIDATE_JAVA: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
