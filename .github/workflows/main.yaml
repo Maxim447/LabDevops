@@ -33,13 +33,6 @@ jobs:
           name: Echo-Bot
           path: build/libs
           
-      - name: Upload to google drive
-        uses: adityak74/google-drive-upload-git-action@main
-        with:
-          credentials: ${{ secrets.CREDENTIALS }}
-          filename: build/libs/LabDevops-0.0.1-SNAPSHOT.jar
-          folderId: ${{ secrets.FOLDER_ID }}
-          overwrite: "true"
           
       - name: Docker Login
         uses: docker/login-action@v2.1.0
@@ -57,3 +50,21 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/bot:latest
+          
+  send:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: Package
+          path: build/libs
+        
+      - name: Upload to google drive
+        uses: adityak74/google-drive-upload-git-action@main
+        with:
+          credentials: ${{ secrets.CREDENTIALS }}
+          filename: build/libs/LabDevops-0.0.1-SNAPSHOT.jar
+          folderId: ${{ secrets.FOLDER_ID }}
+          overwrite: "true"
+  
