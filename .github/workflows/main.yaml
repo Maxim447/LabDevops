@@ -81,5 +81,5 @@ jobs:
           docker run -d --name my-app-container \
           -e "BOT_TOKEN=${{ secrets.BOT_TOKEN }}" \
           -e "BOT_NAME=${{ secrets.BOT_NAME }}" \
-          my-bot
+          ${{ secrets.DOCKER_USERNAME }}/bot:latest
   
