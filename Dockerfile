@@ -4,6 +4,6 @@ COPY build.gradle .
 COPY src ./src
 RUN gradle build -x test --no-daemon
 
-FROM openjdk:17
+FROM openjdk:17-jdk-slim
 COPY --from=build /app/build/libs/*.jar /app/
 CMD ["java", "-jar", "/app/app-0.0.1-SNAPSHOT.jar"]
