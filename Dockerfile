@@ -1,5 +1,9 @@
+FROM gradle:7.6.1-jdk17 AS build
+WORKDIR /app
+COPY build.gradle .
+COPY src ./src
+RUN gradle build --no-daemon
+
 FROM openjdk:17
-ARG JAR_FILE=build/libs/LabDevops-0.0.1-SNAPSHOT.jar
-WORKDIR /app/
-COPY ${JAR_FILE} app.jar
-ENTRYPOINT ["java","-jar","app.jar"]
+COPY --from=build /app/build/libs/*.jar /app/
+CMD ["java", "-jar", "/app/app-0.0.1-SNAPSHOT.jar"]
