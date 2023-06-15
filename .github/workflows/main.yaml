@@ -78,6 +78,8 @@ jobs:
           docker stop my-app-container || true
           docker rm my-app-container || true
           docker pull ${{ secrets.DOCKER_USERNAME }}/bot:latest
-          docker run -d --name my-app-container ${{ secrets.DOCKER_USERNAME }}/bot:latest -e "BOT_TOKEN=${{ secrets.BOT_TOKEN }}" \
-          -e "BOT_NAME=${{ secrets.BOT_NAME }}"
+          docker run -d --name my-app-container \
+          -e "BOT_TOKEN=${{ secrets.BOT_TOKEN }}" \
+          -e "BOT_NAME=${{ secrets.BOT_NAME }}" \
+          my-bot
   
